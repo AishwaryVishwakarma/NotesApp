@@ -1,2 +1,2 @@
 # NotesApp
- A notes ahring platform
+ A notes sharing platform
