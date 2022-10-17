@@ -1,6 +1,7 @@
 import React from "react";
 import { AiOutlineUser, AiOutlineEye } from "react-icons/ai";
 import Loading from "../Loading/Loading";
+import { Link } from "react-router-dom";
 import classes from "./Login.module.css";
 
 const Login = (props) => {
@@ -38,6 +39,11 @@ const Login = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(user);
+    setUser({
+      username: "",
+      password: "",
+      rememberMe: false,
+    });
   };
 
   return (
@@ -52,8 +58,8 @@ const Login = (props) => {
             <h1 className={classes.login__title}>Login</h1>
             <p className={classes.login__subtitle}>{currentUser} Login</p>
             <form className={classes.login__form} onSubmit={handleSubmit}>
-              <label htmlFor="username" className={classes.form__label}>
-                <p>Username</p>
+              <div className={classes.form__label}>
+                <label htmlFor="username">Username </label>
                 <div className={classes.form__inputContainer}>
                   <input
                     type="text"
@@ -68,9 +74,10 @@ const Login = (props) => {
                   />
                   <AiOutlineUser className={classes.form__icon} />
                 </div>
-              </label>
-              <label htmlFor="password" className={classes.form__label}>
-                <p>Password</p>
+              </div>
+              <div className={classes.form__label}>
+                <label htmlFor="password">Password</label>
+
                 <div className={classes.form__inputContainer}>
                   <input
                     type={showPassword ? "text" : "password"}
@@ -88,7 +95,7 @@ const Login = (props) => {
                     style={{ cursor: "pointer" }}
                   />
                 </div>
-              </label>
+              </div>
               <div className={classes.bottom__section}>
                 <label
                   htmlFor="rememberMe"
@@ -98,7 +105,7 @@ const Login = (props) => {
                     type="checkbox"
                     name="rememberMe"
                     id="rememberMe"
-                    value={user.rememberMe}
+                    checked={user.rememberMe}
                     onChange={handleChange}
                   />
                   <p>Remember Me</p>
@@ -107,9 +114,9 @@ const Login = (props) => {
                   <a href="#">Forgot Password?</a>
                 </h4>
               </div>
-              <button type="submit" className={classes.login__button}>
+              <Link to="/student" type="submit" className={classes.login__button}>
                 Login
-              </button>
+              </Link>
             </form>
             <div className={classes.footer__section}>
               <p>

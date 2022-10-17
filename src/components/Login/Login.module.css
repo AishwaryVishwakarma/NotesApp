@@ -70,7 +70,7 @@
   margin: 10px 0;
 }
 
-.form__label p {
+.form__label label {
   font-size: 0.9rem;
   font-weight: 400;
   margin-bottom: 5px;
@@ -135,7 +135,7 @@ a:hover {
 
 .login__button {
   width: 30%;
-  height: 2.5rem;
+  padding: 0.7rem 0;
   border: none;
   outline: none;
   border-radius: 10px;
@@ -145,6 +145,7 @@ a:hover {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  text-align: center;
 }
 
 .login__button:hover {

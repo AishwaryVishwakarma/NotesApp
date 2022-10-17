@@ -1,6 +1,7 @@
 import React from "react";
 import Login from "./components/Login/Login";
 import StudentDashboard from "./components/Student/StudentDashboard";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   /*Current user*/
@@ -19,12 +20,21 @@ function App() {
   };
 
   return (
-    // <Login
-    //   currentUser={currentUser}
-    //   changeUser={changeUser}
-    //   isLoading={loading}
-    // />
-    <StudentDashboard />
+    <>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Login
+              currentUser={currentUser}
+              changeUser={changeUser}
+              isLoading={loading}
+            />
+          }
+        />
+        <Route path="/student/*" element={<StudentDashboard />} />
+      </Routes>
+    </>
   );
 }
 

@@ -1,0 +1,112 @@
+.profile__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.profile__section {
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 3px #ccc;
+  border-radius: 10px;
+  padding: 2rem 5rem;
+  margin-top: 2rem;
+  width: max-content;
+  height: max-content;
+}
+
+.profile__section__title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+.profile__section__content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.profile__section__content__item p:first-child {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #000;
+}
+
+.profile__section__content__item p:last-child {
+  font-size: 1rem;
+  font-weight: 400;
+  color: rgb(101, 99, 99);
+}
+
+.line__break{
+    width: 100%;
+    height: 1px;
+    background-color: #ccc;
+    margin: 2rem 0;
+}
+
+.change__passwordInput__section{
+    margin: 1rem 0;
+}
+.change__passwordInput__section label{
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #000;
+}
+
+.input__field{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 0.1rem 0.3rem;
+    border-radius: 5px;
+    outline: none;
+    margin: 0.5rem 0;
+}
+
+.change__passwordInput__section input{
+    width: 100%;
+    height: 1.5rem;
+    border-radius: 5px;
+    padding: 0.5rem;
+    outline: none;
+    border: none;
+}
+
+.eye__icon{
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.change__password {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  height: 100%;
+  margin-top: 2rem;
+}
+
+.change__password button {
+  border: none;
+  outline: none;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  background-color: var(--primary);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.change__password button:hover {
+  transform: scale(1.05);
+}

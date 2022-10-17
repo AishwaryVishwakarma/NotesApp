@@ -1,0 +1,38 @@
+export default [
+  {
+    id: "1",
+    semester: "1",
+    subject: "Maths",
+    unit: "1",
+    approvedBy: "Mr. John",
+    date: "2020-01-01",
+    credits: "5",
+  },
+  {
+    id: "2",
+    semester: "2",
+    subject: "Physics",
+    unit: "2",
+    approvedBy: "Mr. John",
+    date: "2020-01-01",
+    credits: "50",
+  },
+  {
+    id: "3",
+    semester: "3",
+    subject: "Chemistry",
+    unit: "3",
+    approvedBy: "Mr. John",
+    date: "2020-02-01",
+    credits: "500",
+  },
+  {
+    id: "4",
+    semester: "4",
+    subject: "Maths",
+    unit: "4",
+    approvedBy: "Mr. John",
+    date: "2020-03-01",
+    credits: "5000",
+  },
+];

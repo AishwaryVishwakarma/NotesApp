@@ -10,4 +10,6 @@
 
 :root{
   --primary: #066cbf;
+  --danger: #ff0000;
+  --primaryDark: #0a4a8a;
 }
