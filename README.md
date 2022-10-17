@@ -1,2 +1,2 @@
 # NotesApp
- A notes sharing platform
+ A notes sharing platform at an university level
