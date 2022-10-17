@@ -7,6 +7,11 @@
   width: max-content;
   height: max-content;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.MyUpload__card__container:hover {
+  transform: scale(1.02);
 }
 
 .MyUpload__card__header{

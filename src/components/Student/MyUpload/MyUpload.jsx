@@ -39,7 +39,15 @@ const MyUpload = () => {
       </div>
       <div className={classes.card__section}>
         {filteredData.map((data, index) => (
-          <MyUploadCard key={index} data={data} />
+          <MyUploadCard 
+            key={index}
+            semester={data.semester}
+            subject={data.subject}
+            unit={data.unit}
+            approvedBy={data.approvedBy}
+            date={data.date}
+            credits={data.credits}
+          />
         ))}
       </div>
     </>
