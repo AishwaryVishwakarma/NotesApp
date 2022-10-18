@@ -17,3 +17,8 @@ export const MYUPLOAD_FILTER_DATA = {
   subject: ["Any", "Maths", "Physics", "Chemistry", "English", "Hindi"],
   unit: ["Any", "1", "2", "3", "4", "5"],
 };
+
+export const FACULTY_UPLOAD_FILTER_DATA = {
+  subject: ["Any", "Maths", "Physics", "Chemistry", "English", "Hindi"],
+  unit: ["Any", "1", "2", "3", "4", "5"],
+};

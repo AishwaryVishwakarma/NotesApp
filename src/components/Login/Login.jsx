@@ -114,7 +114,11 @@ const Login = (props) => {
                   <a href="#">Forgot Password?</a>
                 </h4>
               </div>
-              <Link to="/student" type="submit" className={classes.login__button}>
+              <Link
+                to={currentUser === "Student" ? "/student" : "/faculty"}
+                type="submit"
+                className={classes.login__button}
+              >
                 Login
               </Link>
             </form>

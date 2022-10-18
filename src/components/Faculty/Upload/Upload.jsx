@@ -1,14 +1,12 @@
-import React from "react";
-import classes from "./Upload.module.css";
+import React from 'react'
 import Select from "../../Utilities/Select";
 import FileUpload from "../../Utilities/FileUpload";
-import {UPLOAD_FILTER_DATA} from "../../../../DATA/FilterData";
+import { FACULTY_UPLOAD_FILTER_DATA } from '../../../../DATA/FilterData';
+import classes from './Upload.module.css'
 
 const Upload = () => {
   /*Notes upload filter state*/
   const [filter, setFilter] = React.useState({
-    branch: "Any",
-    semester: "Any",
     subject: "Any",
     unit: "Any",
   });
@@ -26,7 +24,7 @@ const Upload = () => {
   return (
     <div className={classes.upload__container}>
       <div className={classes.upload}>
-        {Object.keys(UPLOAD_FILTER_DATA).map((key, index) => (
+        {Object.keys(FACULTY_UPLOAD_FILTER_DATA).map((key, index) => (
           <div key={index} className={classes.upload__item}>
             <label htmlFor={key}>
               {key[0].toUpperCase() + key.slice(1) + ": "}
@@ -35,7 +33,7 @@ const Upload = () => {
               name={key}
               className={classes.upload__select}
               value={filter[key]}
-              options={UPLOAD_FILTER_DATA[key]}
+              options={FACULTY_UPLOAD_FILTER_DATA[key]}
               onChange={filterHandler}
             />
           </div>
@@ -45,6 +43,6 @@ const Upload = () => {
       </div>
     </div>
   );
-};
+}
 
-export default Upload;
+export default Upload

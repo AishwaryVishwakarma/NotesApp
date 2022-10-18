@@ -1,6 +1,6 @@
 import React from "react";
 import Select from "../../../Utilities/Select";
-import { MYUPLOAD_FILTER_DATA } from "../../../../FilterData";
+import { MYUPLOAD_FILTER_DATA } from "../../../../../DATA/FilterData";
 import classes from "./MyUploadFilter.module.css";
 
 const MyUploadFilter = ({filter, filterChangeHandler}) => {

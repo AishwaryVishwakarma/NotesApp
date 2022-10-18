@@ -80,7 +80,7 @@ const Profile = () => {
         {showPasswordForm ? (
           <form className={classes.change__passwordInput__section}>
             <label htmlFor="newPassword">New Password</label>
-            <div className={classes.input__field}>
+            <div className={classes.input__field__password}>
               <input
                 type={passwordVisibility.newPassword ? "text" : "password"}
                 id="newPassword"
@@ -103,7 +103,7 @@ const Profile = () => {
               )}
             </div>
             <label htmlFor="confirmPassword">Confirm Password</label>
-            <div className={classes.input__field}>
+            <div className={classes.input__field__confirmPassword}>
               <input
                 type={passwordVisibility.confirmPassword ? "text" : "password"}
                 id="confirmPassword"

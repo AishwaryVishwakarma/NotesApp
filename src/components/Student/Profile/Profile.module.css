@@ -5,6 +5,18 @@
   justify-content: center;
   width: 100%;
   height: 100%;
+  animation: drop-from-top 1s ease-in-out;
+}
+
+@keyframes drop-from-top {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .profile__section {
@@ -43,45 +55,50 @@
   color: rgb(101, 99, 99);
 }
 
-.line__break{
-    width: 100%;
-    height: 1px;
-    background-color: #ccc;
-    margin: 2rem 0;
+.line__break {
+  width: 100%;
+  height: 1px;
+  background-color: #ccc;
+  margin: 2rem 0;
 }
 
-.change__passwordInput__section{
-    margin: 1rem 0;
+.change__passwordInput__section {
+  margin: 1rem 0;
 }
-.change__passwordInput__section label{
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: #000;
-}
-
-.input__field{
-    display: flex;
-    align-items: center;
-    width: 100%;
-    border: 1px solid #ccc;
-    padding: 0.1rem 0.3rem;
-    border-radius: 5px;
-    outline: none;
-    margin: 0.5rem 0;
+.change__passwordInput__section label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #000;
 }
 
-.change__passwordInput__section input{
-    width: 100%;
-    height: 1.5rem;
-    border-radius: 5px;
-    padding: 0.5rem;
-    outline: none;
-    border: none;
+.input__field__password,
+.input__field__confirmPassword {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 0.1rem 0.3rem;
+  border-radius: 5px;
+  outline: none;
+  margin: 0.5rem 0;
 }
 
-.eye__icon{
-    font-size: 1.2rem;
-    cursor: pointer;
+.input__field__password {
+  margin-bottom: 1.5rem;
+}
+
+.change__passwordInput__section input {
+  width: 100%;
+  height: 1.5rem;
+  border-radius: 5px;
+  padding: 0.8rem;
+  outline: none;
+  border: none;
+}
+
+.eye__icon {
+  font-size: 1.2rem;
+  cursor: pointer;
 }
 
 .change__password {

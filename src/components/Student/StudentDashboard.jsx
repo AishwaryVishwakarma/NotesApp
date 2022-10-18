@@ -13,7 +13,7 @@ const StudentDashboard = () => {
 
   /*Extract the last part of the url*/
   const lastPartOfUrl = window.location.pathname.split("/").pop();
-  console.log(lastPartOfUrl);
+  // console.log(lastPartOfUrl);
 
   const [selectedTab, setSelectedTab] = React.useState(() => {
     if (lastPartOfUrl === "student") {
@@ -47,62 +47,66 @@ const StudentDashboard = () => {
 
   return (
     <>
-      <nav className={classes.navbar}>
-        <ul className={classes.nav}>
-          <FaUserCircle className={classes.icon} />
-          <div className={classes.line__break} />
-          <li className={classes.title}>
-            <h2>Aishwary Vishwakarma</h2>
-            <p>320 credits</p>
-          </li>
-          <Link to="/student" style={linkStyles}>
-            <li
-              className={getClassName("notes")}
-              onClick={() => handleTabChange("notes")}
-            >
-              Notes
+      <div className={classes.studentDashboard__container}>
+        <nav className={classes.navbar}>
+          <ul className={classes.nav}>
+            <FaUserCircle className={classes.icon} />
+            <div className={classes.line__break} />
+            <li className={classes.title}>
+              <h2>Aishwary Vishwakarma</h2>
+              <p>320 credits</p>
             </li>
-          </Link>
-          <Link to="/student/upload" style={linkStyles}>
-            <li
-              className={getClassName("upload")}
-              onClick={() => handleTabChange("upload")}
+            <Link to="/student" style={linkStyles}>
+              <li
+                className={getClassName("notes")}
+                onClick={() => handleTabChange("notes")}
+              >
+                Notes
+              </li>
+            </Link>
+            <Link to="/student/upload" style={linkStyles}>
+              <li
+                className={getClassName("upload")}
+                onClick={() => handleTabChange("upload")}
+              >
+                Upload
+              </li>
+            </Link>
+            <Link to="/student/my-upload" style={linkStyles}>
+              <li
+                className={getClassName("myuploads")}
+                onClick={() => handleTabChange("myuploads")}
+              >
+                My Uploads
+              </li>
+            </Link>
+            <Link to="/student/profile" style={linkStyles}>
+              <li
+                className={getClassName("profile")}
+                onClick={() => handleTabChange("profile")}
+              >
+                Profile
+              </li>
+            </Link>
+            <button
+              onClick={() => {
+                navigate("/");
+              }}
+              className={classes.logout}
             >
-              Upload
-            </li>
-          </Link>
-          <Link to="/student/myuploads" style={linkStyles}>
-            <li
-              className={getClassName("myuploads")}
-              onClick={() => handleTabChange("myuploads")}
-            >
-              My Uploads
-            </li>
-          </Link>
-          <Link to="/student/profile" style={linkStyles}>
-            <li
-              className={getClassName("profile")}
-              onClick={() => handleTabChange("profile")}
-            >
-              Profile
-            </li>
-          </Link>
-          <button
-            onClick={() => {
-              navigate("/");
-            }}
-            className={classes.logout}
-          >
-            Logout
-          </button>
-        </ul>
-      </nav>
-      <Routes>
-        <Route path="/" element={<Notes />} />
-        <Route path="/upload" element={<Upload />} />
-        <Route path="/myuploads" element={<MyUpload />} />
-        <Route path="/profile" element={<Profile />} />
-      </Routes>
+              Logout
+            </button>
+          </ul>
+        </nav>
+        <div className={classes.body}>
+          <Routes>
+            <Route path="/" element={<Notes />} />
+            <Route path="/upload" element={<Upload />} />
+            <Route path="/my-upload" element={<MyUpload />} />
+            <Route path="/profile" element={<Profile />} />
+          </Routes>
+        </div>
+      </div>
     </>
   );
 };

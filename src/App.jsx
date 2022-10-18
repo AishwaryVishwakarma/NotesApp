@@ -2,6 +2,7 @@ import React from "react";
 import Login from "./components/Login/Login";
 import StudentDashboard from "./components/Student/StudentDashboard";
 import { Routes, Route } from "react-router-dom";
+import FacultyDashBoard from "./components/Faculty/FacultyDashBoard";
 
 function App() {
   /*Current user*/
@@ -33,6 +34,7 @@ function App() {
           }
         />
         <Route path="/student/*" element={<StudentDashboard />} />
+        <Route path="/faculty/*" element={<FacultyDashBoard />} />
       </Routes>
     </>
   );

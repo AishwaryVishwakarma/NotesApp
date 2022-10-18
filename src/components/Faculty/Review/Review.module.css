@@ -1,0 +1,14 @@
+.review__container{
+    animation: come-from-left 1s ease-in-out;
+}
+
+@keyframes come-from-left {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

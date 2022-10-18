@@ -1,3 +1,18 @@
+.myUpload__container {
+  animation: drop-from-top 1s ease-in-out;
+}
+
+@keyframes drop-from-top {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .myUpload__filter__section {
   padding-top: 2rem;
 }

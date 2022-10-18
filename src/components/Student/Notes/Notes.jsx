@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./Notes.module.css";
 import NotesFilter from "./Notes-Filter/NotesFilter";
-import DATA from "../../../StudentNotesData";
+import DATA from "../../../../DATA/StudentNotesData";
 import Card from "../Card/Card";
 
 const Notes = () => {

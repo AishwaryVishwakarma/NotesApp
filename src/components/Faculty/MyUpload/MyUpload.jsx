@@ -1,13 +1,12 @@
 import React from "react";
-import MyUploadFilter from "./MyUpload-Filter/MyUploadFilter";
 import classes from "./MyUpload.module.css";
-import MyUploadCard from "./MyUploadCard/MyUploadCard";
+import MyUploadFilter from "./MyUpload-Filter/MyUploadFilter";
 import DATA from "../../../../DATA/MyUploadData";
+import MyUploadCard from "./MyUploadCard/MyUploadCard";
 
 const MyUpload = () => {
   /*State for the filter*/
   const [filter, setFilter] = React.useState({
-    semester: "Any",
     subject: "Any",
     unit: "Any",
   });
@@ -24,14 +23,10 @@ const MyUpload = () => {
   /*Filtering the data*/
   const filteredData = DATA.filter((data) => {
     return (
-      (filter.semester === "Any" || data.semester === filter.semester) &&
       (filter.subject === "Any" || data.subject === filter.subject) &&
       (filter.unit === "Any" || data.unit === filter.unit)
     );
   });
-
-  console.log(filteredData);
-
   return (
     <>
       <div className={classes.myUpload__container}>
@@ -45,12 +40,17 @@ const MyUpload = () => {
           {filteredData.map((data, index) => (
             <MyUploadCard
               key={index}
-              semester={data.semester}
               subject={data.subject}
               unit={data.unit}
-              approvedBy={data.approvedBy}
               date={data.date}
-              credits={data.credits}
+            />
+          ))}
+          {filteredData.map((data, index) => (
+            <MyUploadCard
+              key={index}
+              subject={data.subject}
+              unit={data.unit}
+              date={data.date}
             />
           ))}
         </div>
