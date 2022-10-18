@@ -5,7 +5,7 @@ import Upload from "./Upload/Upload";
 import MyUpload from "./MyUpload/MyUpload";
 import Review from "./Review/Review";
 import Approve from "./Approve/Approve";
-import ChangePassword from "./Change-Password/ChangePassword";
+import Profile from "./Profile/Profile";
 import { useNavigate } from "react-router-dom";
 
 const linkStyle = {
@@ -85,12 +85,12 @@ const FacultyDashBoard = () => {
                     Review
                   </li>
                 </Link>
-                <Link to="/faculty/change-password" style={linkStyle}>
+                <Link to="/faculty/profile" style={linkStyle}>
                   <li
-                    className={getClassName("change-password")}
-                    onClick={() => handleTabChange("change-password")}
+                    className={getClassName("profile")}
+                    onClick={() => handleTabChange("profile")}
                   >
-                    Change Password
+                    Profile
                   </li>
                 </Link>
                 <button
@@ -110,7 +110,7 @@ const FacultyDashBoard = () => {
               <Route path="/my-upload" element={<MyUpload />} />
               <Route path="/approve" element={<Approve />} />
               <Route path="/review" element={<Review />} />
-              <Route path="/change-password" element={<ChangePassword />} />
+              <Route path="/profile" element={<Profile />} />
             </Routes>
           </div>
         </div>
