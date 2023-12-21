@@ -1,0 +1,16 @@
+{
+  "name": "notesapp",
+  "version": "1.0.0",
+  "description": "A notes sharing platform",
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": {
+    "name": "Aishwary Vishwakarma",
+    "email": "aishwaryvishwakarma23@gmail.com"
+  }
+}
