@@ -12,5 +12,12 @@
   "author": {
     "name": "Aishwary Vishwakarma",
     "email": "aishwaryvishwakarma23@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AishwaryVishwakarma/NotesApp"
+  },
+  "bugs": {
+    "url": "https://github.com/AishwaryVishwakarma/NotesApp/issues"
   }
 }

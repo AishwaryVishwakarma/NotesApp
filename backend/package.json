@@ -7,6 +7,13 @@
     "name": "Aishwary Vishwakarma",
     "email": "aishwaryvishwakarma23@gmail.com"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AishwaryVishwakarma/NotesApp"
+  },
+  "bugs": {
+    "url": "https://github.com/AishwaryVishwakarma/NotesApp/issues"
+  },
   "devDependencies": {
     "@types/node": "^20.10.5",
     "eslint": "^8.56.0",
