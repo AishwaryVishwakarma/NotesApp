@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.layouted {
+  display: grid;
+  grid-template-columns: 1fr calc(min(80rem, 100%)) 1fr;
+
+  > * {
+    grid-column: 2;
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
