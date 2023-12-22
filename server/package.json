@@ -1,8 +1,8 @@
 {
   "name": "notesapp-server",
-  "version": "1.0.0",
   "description": "Backend for Notes App",
-  "main": "index.js",
+  "version": "1.0.0",
+  "main": "src/index.js",
   "author": {
     "name": "Aishwary Vishwakarma",
     "email": "aishwaryvishwakarma23@gmail.com"
