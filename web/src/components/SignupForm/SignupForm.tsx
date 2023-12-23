@@ -3,6 +3,7 @@
 import Eye from '@/assets/icons/Eye';
 import EyeClosed from '@/assets/icons/EyeClosed';
 import Spinner from '@/assets/icons/loaders/Spinner/Spinner';
+import {setStorage} from '@/utils/storage';
 import axios from 'axios';
 import React from 'react';
 
@@ -45,7 +46,19 @@ const SignupForm = () => {
       password,
     };
 
-    // axios.post(`${process.env.NEXT_PUBLIC_HOST}signup`, payload);
+    axios
+      .post(`${process.env.NEXT_PUBLIC_HOST}signup`, payload)
+      .then((res) => {
+        const {jwtToken} = res.data ?? {};
+        setStorage(
+          {
+            token: jwtToken,
+          },
+          localStorage
+        );
+      })
+      .catch((err) => console.debug(err))
+      .finally(() => setLoading(false));
   };
 
   return (

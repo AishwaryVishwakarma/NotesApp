@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import mongoose, {type ConnectOptions} from 'mongoose';
 import userRoutes from './routes/user';
+import cors from 'cors';
 
 const PORT = process.env.PORT || 8000;
 
@@ -11,6 +12,14 @@ dotenv.config();
 const app = express();
 
 app.use(express.json());
+
+app.use(
+  cors({
+    origin: ['http://localhost:3000'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true,
+  })
+);
 
 app.use(bodyParser.urlencoded({extended: true}));
 
