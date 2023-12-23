@@ -8,7 +8,7 @@ interface SvgProps extends SVGAttributes<SVGElement> {
 const Eye: React.FC<SvgProps> = ({height = 24, width = 24, ...rest}) => {
   return (
     <svg
-      enable-background='new 0 0 24 24'
+      enableBackground='new 0 0 24 24'
       height={height}
       id='Layer_1'
       version='1.1'

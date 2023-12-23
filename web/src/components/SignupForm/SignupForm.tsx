@@ -60,6 +60,7 @@ const SignupForm = () => {
             autoComplete='given-name'
             onChange={onChangeHandler}
             value={formData.firstName}
+            required
           />
         </div>
         <div className={styles.inputField}>
@@ -71,6 +72,7 @@ const SignupForm = () => {
             autoComplete='family-name'
             onChange={onChangeHandler}
             value={formData.lastName}
+            required
           />
         </div>
       </div>
@@ -83,6 +85,7 @@ const SignupForm = () => {
           autoComplete='email'
           onChange={onChangeHandler}
           value={formData.email}
+          required
         />
       </div>
       <div className={styles.inputField}>
@@ -94,6 +97,7 @@ const SignupForm = () => {
           autoComplete='password'
           onChange={onChangeHandler}
           value={formData.password}
+          required
         />
         <span
           className={styles.iconContainer}

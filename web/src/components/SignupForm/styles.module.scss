@@ -30,6 +30,18 @@
     margin-top: 10px;
     height: 40px;
     width: 200px;
+    user-select: none;
+  }
+
+  @media (max-width: 800px) {
+    .nameField {
+      grid-template-columns: 1fr;
+      width: 100%;
+    }
+
+    button {
+      width: 100%;
+    }
   }
 }
 
