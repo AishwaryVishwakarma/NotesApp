@@ -14,6 +14,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_CLUSTER}/?retryWrites=true&w=majority`;
 
+// Mongoose config options
 const options = {useNewUrlParser: true};
 
 // Mongoose connection
@@ -27,7 +28,7 @@ connection.on('open', () => {
   console.log('database connected');
 });
 
-app.get('/', async (_, res: Response) => {
+app.get('/', async (_, res: Response): Promise<void> => {
   res.send('server accepting request');
 });
 
