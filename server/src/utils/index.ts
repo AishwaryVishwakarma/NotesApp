@@ -41,7 +41,7 @@ export function isArrayEmpty<T>(val: T[] | []): boolean {
 }
 
 // Returns a string with Indian ₹. format (with commas)
-export function formatCurrency<T>(val: T | number) {
+export function formatCurrency<T>(val: T | number): string | undefined {
   if (!isNumber(val)) return;
 
   return val.toLocaleString('hi', {

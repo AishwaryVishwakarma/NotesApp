@@ -1,0 +1,27 @@
+@mixin flexbox($direction: row, $align: center, $justify: center) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+  flex-direction: $direction;
+}
+
+.signupPage {
+  @include flexbox();
+  height: 100%;
+  background: linear-gradient(to top right, #fc2c77 0%, #6c4079 100%);
+}
+
+.container {
+  padding: 57px 65px;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+
+  h1 {
+    font-family: var(--poppins);
+    font-size: 24px;
+    color: #525252;
+    font-weight: 400;
+    margin-bottom: 40px;
+  }
+}

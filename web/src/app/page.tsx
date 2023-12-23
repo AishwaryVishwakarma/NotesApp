@@ -1,7 +1,13 @@
 import Layout from '@/components/Layout/Layout';
 
-import styles from './styles.module.css';
+import styles from './styles.module.scss';
 
-export default function Home() {
-  return <Layout>Hello</Layout>;
-}
+const Home = () => {
+  return (
+    <Layout>
+      <section className={styles.homePage}>wefwe</section>
+    </Layout>
+  );
+};
+
+export default Home;
