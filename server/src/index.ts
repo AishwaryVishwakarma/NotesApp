@@ -2,6 +2,7 @@ import express, {type Response} from 'express';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import mongoose, {type ConnectOptions} from 'mongoose';
+import userRoutes from './routes/user';
 
 const PORT = process.env.PORT || 8000;
 
@@ -10,7 +11,10 @@ dotenv.config();
 const app = express();
 
 app.use(express.json());
+
 app.use(bodyParser.urlencoded({extended: true}));
+
+app.use(userRoutes);
 
 const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_CLUSTER}/?retryWrites=true&w=majority`;
 

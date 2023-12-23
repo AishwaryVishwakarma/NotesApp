@@ -104,6 +104,7 @@ const SignupForm = () => {
           onClick={(): void => {
             setPasswordVisible((prev) => !prev);
           }}
+          title={passwordVisible ? 'Hide password' : 'Show password'}
         >
           {passwordVisible ? <Eye /> : <EyeClosed />}
         </span>
