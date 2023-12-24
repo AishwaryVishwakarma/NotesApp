@@ -39,7 +39,7 @@ export async function signup(
 
     res.status(201).send({
       message: 'Success',
-      jwtToken: jwtToken,
+      jwtToken,
     });
   } catch (err) {
     res.status(401).send({detail: err}); // error cases to be discussed
