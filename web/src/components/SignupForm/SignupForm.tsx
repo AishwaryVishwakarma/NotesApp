@@ -41,7 +41,7 @@ const SignupForm = () => {
     const {firstName, lastName, email, password} = formData;
 
     const payload = {
-      name: firstName + lastName,
+      name: firstName + ' ' + lastName,
       email,
       password,
     };
