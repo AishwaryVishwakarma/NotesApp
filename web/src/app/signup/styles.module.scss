@@ -9,6 +9,8 @@
   @include flexbox();
   height: 100%;
   background: linear-gradient(to top right, #fc2c77 0%, #6c4079 100%);
+  position: relative;
+  isolation: isolate;
 }
 
 .container {
@@ -16,6 +18,8 @@
   border-radius: 10px;
   background: #fff;
   box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+  position: absolute;
+  z-index: 2;
 
   h1 {
     font-family: var(--poppins);
@@ -31,4 +35,13 @@
     border-radius: 0;
     padding: 50px 30px;
   }
+}
+
+.particlesContainer {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }

@@ -1,9 +1,10 @@
+import CustomParticles from '@/components/CustomParticles/CustomParticles';
 import Layout from '@/components/Layout/Layout';
+import SignupForm from '@/components/SignupForm/SignupForm';
 import type {Metadata} from 'next';
 import React from 'react';
 
 import styles from './styles.module.scss';
-import SignupForm from '@/components/SignupForm/SignupForm';
 
 export const metadata: Metadata = {
   title: 'Notes App',
@@ -18,6 +19,7 @@ const SignupPage = () => {
         <h1>Sign Up</h1>
         <SignupForm />
       </section>
+      <CustomParticles className={styles.particlesContainer} />
     </Layout>
   );
 };
