@@ -2,7 +2,7 @@
 
 import Eye from '@/assets/icons/Eye';
 import EyeClosed from '@/assets/icons/EyeClosed';
-import Spinner from '@/assets/icons/loaders/Spinner/Spinner';
+import Spinner from '@/assets/loaders/Spinner/Spinner';
 import {setStorage} from '@/utils/storage';
 import axios from 'axios';
 import React from 'react';
