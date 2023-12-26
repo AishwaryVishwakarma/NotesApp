@@ -2,6 +2,8 @@
 
 import {Eye, EyeClosed} from '@/assets/icons';
 import {Spinner} from '@/assets/loaders';
+import {setStorage} from '@/utils/storage';
+import axios from 'axios';
 import Link from 'next/link';
 import React from 'react';
 
@@ -9,8 +11,6 @@ import styles from './styles.module.scss';
 
 const LoginForm = ({className}: {className?: string}) => {
   const [formData, setFormData] = React.useState({
-    firstName: '',
-    lastName: '',
     email: '',
     password: '',
   });
@@ -31,8 +31,38 @@ const LoginForm = ({className}: {className?: string}) => {
     });
   };
 
+  const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>): void => {
+    e.preventDefault();
+
+    setLoading(true);
+
+    const {email, password} = formData;
+
+    const payload = {
+      email,
+      password,
+    };
+
+    axios
+      .post(`${process.env.NEXT_PUBLIC_HOST}login`, payload)
+      .then((res): void => {
+        const {jwtToken} = res.data ?? {};
+        setStorage(
+          {
+            token: jwtToken,
+          },
+          localStorage
+        );
+      })
+      .catch((err) => console.debug(err))
+      .finally(() => setLoading(false));
+  };
+
   return (
-    <form className={`${className} ${styles.loginForm}`}>
+    <form
+      className={`${className} ${styles.loginForm}`}
+      onSubmit={onSubmitHandler}
+    >
       <h1>
         Welcome back!
         <br />

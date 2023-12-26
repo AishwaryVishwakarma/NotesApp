@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema({
     default: Date.now,
   },
   last_log_in: {
-    type: Date,
+    type: String,
     required: false,
   },
 });

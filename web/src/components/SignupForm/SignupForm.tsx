@@ -5,11 +5,14 @@ import {Spinner} from '@/assets/loaders';
 import {setStorage} from '@/utils/storage';
 import axios from 'axios';
 import Link from 'next/link';
+import {useRouter} from 'next/navigation';
 import React from 'react';
 
 import styles from './styles.module.scss';
 
 const SignupForm = () => {
+  const router = useRouter();
+
   const [formData, setFormData] = React.useState({
     firstName: '',
     lastName: '',
@@ -48,7 +51,7 @@ const SignupForm = () => {
 
     axios
       .post(`${process.env.NEXT_PUBLIC_HOST}signup`, payload)
-      .then((res) => {
+      .then((res): void => {
         const {jwtToken} = res.data ?? {};
         setStorage(
           {
@@ -56,6 +59,7 @@ const SignupForm = () => {
           },
           localStorage
         );
+        router.replace('/');
       })
       .catch((err) => console.debug(err))
       .finally(() => setLoading(false));
