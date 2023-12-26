@@ -18,6 +18,14 @@
     margin-bottom: 10px;
   }
 
+  .error {
+    color: red;
+    font-family: var(--poppins);
+    font-size: 14px;
+    margin: -15px 0;
+    height: 24px;
+  }
+
   button {
     @include flexbox();
     font-family: var(--poppins);

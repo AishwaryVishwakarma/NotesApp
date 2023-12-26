@@ -68,11 +68,14 @@ export async function login(
 
   try {
     const jwtToken = generateJWT(user.id);
+
     user.last_log_in = Date();
+
     await user.save();
 
     res.status(200).send({
       message: 'success',
+      id: user._id,
       email,
       jwtToken,
     });

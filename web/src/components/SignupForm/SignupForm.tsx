@@ -59,7 +59,7 @@ const SignupForm = () => {
           },
           localStorage
         );
-        router.replace('/');
+        router.push('/');
       })
       .catch((err) => console.debug(err))
       .finally(() => setLoading(false));

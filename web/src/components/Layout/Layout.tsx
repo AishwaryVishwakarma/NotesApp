@@ -2,8 +2,9 @@
 
 import React from 'react';
 
+import Navbar from '../Navbar/Navbar';
+
 // import Footer from '../Footer/Footer';
-// import Navbar from '../Navbar/Navbar';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -26,7 +27,7 @@ const Layout: React.FC<LayoutProps> = ({
 }) => {
   return (
     <>
-      {/* {navbar && <Navbar className={navbarStyles} />} */}
+      {navbar && <Navbar className={navbarStyles} />}
       <main className={`${className} ${layouted && 'layouted'}`}>
         {children}
       </main>

@@ -2,20 +2,26 @@
 
 import {Eye, EyeClosed} from '@/assets/icons';
 import {Spinner} from '@/assets/loaders';
+import {isValidString} from '@/utils';
 import {setStorage} from '@/utils/storage';
 import axios from 'axios';
 import Link from 'next/link';
+import {useRouter} from 'next/navigation';
 import React from 'react';
 
 import styles from './styles.module.scss';
 
 const LoginForm = ({className}: {className?: string}) => {
+  const router = useRouter();
+
   const [formData, setFormData] = React.useState({
     email: '',
     password: '',
   });
 
   const [passwordVisible, setPasswordVisible] = React.useState(false);
+
+  const [error, setError] = React.useState('');
 
   const [loading, setLoading] = React.useState(false);
 
@@ -36,25 +42,25 @@ const LoginForm = ({className}: {className?: string}) => {
 
     setLoading(true);
 
-    const {email, password} = formData;
-
-    const payload = {
-      email,
-      password,
-    };
+    setError('');
 
     axios
-      .post(`${process.env.NEXT_PUBLIC_HOST}login`, payload)
+      .post(`${process.env.NEXT_PUBLIC_HOST}login`, formData)
       .then((res): void => {
-        const {jwtToken} = res.data ?? {};
+        const {id, jwtToken} = res.data ?? {};
         setStorage(
           {
             token: jwtToken,
           },
           localStorage
         );
+        router.push(`/home?user_id=${id}`);
       })
-      .catch((err) => console.debug(err))
+      .catch((err) => {
+        const errorMessage =
+          err?.response?.data?.detail ?? 'Something went wrong';
+        setError(errorMessage);
+      })
       .finally(() => setLoading(false));
   };
 
@@ -101,6 +107,7 @@ const LoginForm = ({className}: {className?: string}) => {
           {passwordVisible ? <Eye /> : <EyeClosed />}
         </span>
       </div>
+      <p className={styles.error}>{isValidString(error) && error}</p>
       <button type='submit'>{loading ? <Spinner /> : 'Login'}</button>
       <span className={styles.footer}>
         Don&apos;t have an account? <Link href='/signup'>Sign Up</Link>

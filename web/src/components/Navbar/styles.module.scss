@@ -1,0 +1,28 @@
+@mixin flexbox($direction: row, $align: center, $justify: center) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+  flex-direction: $direction;
+}
+
+.navbar {
+  @include flexbox();
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  padding: 30px 10vw;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  height: max-content;
+
+  .heading {
+    font-family: var(--poppins);
+    font-size: 24px;
+    color: #fff;
+    font-weight: 400;
+  }
+}
