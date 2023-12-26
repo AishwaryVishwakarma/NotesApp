@@ -1,11 +1,12 @@
-import React, {type SVGAttributes} from 'react';
+import React from 'react';
 
-interface SvgProps extends SVGAttributes<SVGElement> {
-  height?: number;
-  width?: number;
-}
+import {type CommonIconProps} from './types';
 
-const Eye: React.FC<SvgProps> = ({height = 24, width = 24, ...rest}) => {
+export const Eye: React.FC<CommonIconProps> = ({
+  height = 24,
+  width = 24,
+  ...rest
+}) => {
   return (
     <svg
       enableBackground='new 0 0 24 24'
@@ -31,5 +32,3 @@ const Eye: React.FC<SvgProps> = ({height = 24, width = 24, ...rest}) => {
     </svg>
   );
 };
-
-export default Eye;

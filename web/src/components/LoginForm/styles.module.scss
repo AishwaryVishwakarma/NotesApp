@@ -5,14 +5,17 @@
   flex-direction: $direction;
 }
 
-.form {
+.loginForm {
   @include flexbox(column, flex-start, flex-start);
   gap: 30px;
+  padding: 30px;
 
-  .nameField {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
+  h1 {
+    font-family: var(--poppins);
+    font-size: 24px;
+    color: #525252;
+    font-weight: 400;
+    margin-bottom: 10px;
   }
 
   button {
@@ -37,6 +40,17 @@
     }
   }
 
+  @media (max-width: 800px) {
+    .nameField {
+      grid-template-columns: 1fr;
+      width: 100%;
+    }
+
+    button {
+      width: 100%;
+    }
+  }
+
   .footer {
     font-family: var(--poppins);
     font-size: 17px;
@@ -46,17 +60,6 @@
 
     a:hover {
       text-decoration: underline;
-    }
-  }
-
-  @media (max-width: 800px) {
-    .nameField {
-      grid-template-columns: 1fr;
-      width: 100%;
-    }
-
-    button {
-      width: 100%;
     }
   }
 }
