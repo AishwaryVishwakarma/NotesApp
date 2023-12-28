@@ -4,6 +4,10 @@ import React from 'react';
 
 import styles from './styles.module.scss';
 
+export interface NavbarProps extends React.HTMLAttributes<HTMLDivElement> {
+  queryParams: QueryParams;
+}
+
 interface Tab {
   path: string;
   name: string;
@@ -11,11 +15,10 @@ interface Tab {
   isActive: boolean;
 }
 
-const Navbar = ({className}: {className?: string}) => {
-  const searchParams = useSearchParams();
+const Navbar: React.FC<NavbarProps> = ({queryParams, ...rest}) => {
   const pathname = usePathname();
 
-  const userId = searchParams.get('user_id');
+  const {userId} = queryParams ?? {};
 
   const LEFT_TABS: Tab[] = [
     {
@@ -40,7 +43,7 @@ const Navbar = ({className}: {className?: string}) => {
   ];
 
   return (
-    <nav className={`${className} ${styles.navbar} `}>
+    <nav className={styles.navbar} {...rest}>
       <div className={styles.left}>
         <ul>
           {LEFT_TABS.map((tab) => {

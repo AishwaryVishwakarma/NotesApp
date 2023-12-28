@@ -30,6 +30,7 @@ const useUser = () => {
 
   return {
     loading,
+    userId,
   };
 };
 

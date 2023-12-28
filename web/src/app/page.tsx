@@ -1,4 +1,3 @@
-import CustomParticles from '@/components/CustomParticles/CustomParticles';
 import Layout from '@/components/Layout/Layout';
 import LoginForm from '@/components/LoginForm/LoginForm';
 import {type Metadata} from 'next';
@@ -13,7 +12,13 @@ export const metadata: Metadata = {
 
 const SignInPage = () => {
   return (
-    <Layout className={styles.signInPage} navbar={false}>
+    <Layout
+      className={styles.signInPage}
+      showNavbar={false}
+      particleProps={{
+        className: styles.particlesContainer,
+      }}
+    >
       <section className={styles.container}>
         <Image
           src='https://images.pexels.com/photos/114979/pexels-photo-114979.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
@@ -26,7 +31,6 @@ const SignInPage = () => {
         />
         <LoginForm className={styles.right} />
       </section>
-      <CustomParticles className={styles.particlesContainer} />
     </Layout>
   );
 };

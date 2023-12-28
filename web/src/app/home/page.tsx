@@ -1,7 +1,6 @@
 'use client';
 
 import {Spinner} from '@/assets/loaders';
-import CustomParticles from '@/components/CustomParticles/CustomParticles';
 import Layout from '@/components/Layout/Layout';
 import useUser from '@/hooks/useUser';
 import React from 'react';
@@ -9,10 +8,18 @@ import React from 'react';
 import styles from './styles.module.scss';
 
 const HomePage = () => {
-  const {loading} = useUser();
+  const {loading, userId} = useUser();
 
   return (
-    <Layout className={styles.homePage}>
+    <Layout
+      className={styles.homePage}
+      particleProps={{
+        className: styles.particlesContainer,
+      }}
+      queryParams={{
+        userId,
+      }}
+    >
       {loading ? (
         <div className={styles.loadingContainer}>
           <Spinner className={styles.spinner} />
@@ -20,7 +27,6 @@ const HomePage = () => {
       ) : (
         <section className={styles.container}>wefwe</section>
       )}
-      <CustomParticles className={styles.particlesContainer} />
     </Layout>
   );
 };

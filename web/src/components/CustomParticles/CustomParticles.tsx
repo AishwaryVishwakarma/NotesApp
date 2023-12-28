@@ -9,7 +9,7 @@ import Particles, {initParticlesEngine} from '@tsparticles/react';
 import React from 'react';
 import {loadFull} from 'tsparticles';
 
-interface ParticlesProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ParticlesProps extends React.HTMLAttributes<HTMLDivElement> {
   config?: ISourceOptions;
 }
 
