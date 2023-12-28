@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: 'Please login using your details',
 };
 
-const SignInPage = () => {
+const SignInPage: React.FC = () => {
   return (
     <Layout
       className={styles.signInPage}

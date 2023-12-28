@@ -1,26 +1,22 @@
 'use client';
 
-import {isNull} from '@/utils';
+import {isNull, isValidString} from '@/utils';
 import {getStorage} from '@/utils/storage';
-import {useRouter, useSearchParams} from 'next/navigation';
+import {useRouter} from 'next/navigation';
 import React from 'react';
 
 let authToken: string | null;
 
-const useUser = () => {
+const useUser = (userId: string | undefined) => {
   const router = useRouter();
 
-  const searchParams = useSearchParams();
-
   const [loading, setLoading] = React.useState(true);
-
-  const userId = searchParams.get('user_id');
 
   if (typeof window !== 'undefined') {
     [authToken] = getStorage(['token'], localStorage);
   }
 
-  const isValidUser = !isNull(userId) && !isNull(authToken);
+  const isValidUser = isValidString(userId) && !isNull(authToken);
 
   React.useEffect(() => {
     if (!isValidUser) {
@@ -30,7 +26,6 @@ const useUser = () => {
 
   return {
     loading,
-    userId,
   };
 };
 

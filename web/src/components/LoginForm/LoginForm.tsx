@@ -11,7 +11,11 @@ import React from 'react';
 
 import styles from './styles.module.scss';
 
-const LoginForm = ({className}: {className?: string}) => {
+interface LoginFormProps {
+  className?: string;
+}
+
+const LoginForm: React.FC<LoginFormProps> = ({className}) => {
   const router = useRouter();
 
   const [formData, setFormData] = React.useState({

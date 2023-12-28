@@ -11,21 +11,23 @@ export interface NavbarProps extends React.HTMLAttributes<HTMLDivElement> {
 interface Tab {
   path: string;
   name: string;
-  query: Record<string, string | null>;
+  query: {
+    [key: string]: string | undefined;
+  };
   isActive: boolean;
 }
 
 const Navbar: React.FC<NavbarProps> = ({queryParams, ...rest}) => {
   const pathname = usePathname();
 
-  const {userId} = queryParams ?? {};
+  const {userId: user_id} = queryParams ?? {};
 
   const LEFT_TABS: Tab[] = [
     {
       path: '/home',
       name: 'Home',
       query: {
-        user_id: userId,
+        user_id,
       },
       isActive: pathname === '/home',
     },
@@ -36,7 +38,7 @@ const Navbar: React.FC<NavbarProps> = ({queryParams, ...rest}) => {
       path: '/profile',
       name: 'Profile',
       query: {
-        user_id: userId,
+        user_id,
       },
       isActive: pathname === '/profile',
     },
@@ -69,7 +71,7 @@ const Navbar: React.FC<NavbarProps> = ({queryParams, ...rest}) => {
           href={{
             pathname: '/home',
             query: {
-              user_id: userId,
+              user_id,
             },
           }}
         >

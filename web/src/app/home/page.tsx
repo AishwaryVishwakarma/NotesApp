@@ -7,8 +7,10 @@ import React from 'react';
 
 import styles from './styles.module.scss';
 
-const HomePage = () => {
-  const {loading, userId} = useUser();
+const HomePage: React.FC<PageProps> = ({searchParams}) => {
+  const {user_id: userId} = searchParams ?? {};
+
+  const {loading} = useUser(userId);
 
   return (
     <Layout

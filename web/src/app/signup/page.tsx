@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: 'Please signup using your details',
 };
 
-const SignupPage = () => {
+const SignupPage: React.FC = () => {
   return (
     <Layout
       className={styles.signupPage}

@@ -10,7 +10,7 @@ import React from 'react';
 
 import styles from './styles.module.scss';
 
-const SignupForm = () => {
+const SignupForm: React.FC = () => {
   const router = useRouter();
 
   const [formData, setFormData] = React.useState({

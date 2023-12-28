@@ -1,3 +1,9 @@
 interface QueryParams {
-  userId: string | null;
+  userId: string | undefined;
+}
+
+interface PageProps {
+  searchParams: {
+    [key: string]: string | undefined;
+  };
 }
