@@ -1,8 +1,8 @@
 import express from 'express';
-import {userModel} from '../schema/userSchema';
+import {User, userModel} from '../schema/userSchema';
 import bcrypt from 'bcrypt';
 import dotenv from 'dotenv';
-import {isNull} from '../utils';
+import {isNull, isNullOrUndefined} from '../utils';
 import {generateJWT} from '../middleware/userMiddleware';
 
 dotenv.config();
@@ -14,7 +14,7 @@ export async function signup(
   req: express.Request,
   res: express.Response
 ): Promise<void> {
-  const {name, email, password} = req.body;
+  const {name, email, password} = req.body ?? {};
 
   if (!name || !email || !password) {
     res.status(400).send({message: 'Mandatory Field missing'});
@@ -52,7 +52,7 @@ export async function login(
   req: express.Request,
   res: express.Response
 ): Promise<void> {
-  const {email, password} = req.body;
+  const {email, password} = req.body ?? {};
 
   if (!email || !password) {
     res.status(400).send({detail: 'Mandatory Field missing'});
@@ -78,6 +78,37 @@ export async function login(
       id: user._id,
       email,
       jwtToken,
+    });
+  } catch (error) {
+    res.status(401).send({detail: error});
+  }
+}
+
+//
+export async function getUser(
+  req: express.Request,
+  res: express.Response
+): Promise<void> {
+  const {user_id: userId} = req.body ?? {};
+
+  if (isNullOrUndefined(userId)) {
+    res.status(400).send({detail: 'User ID is missing'});
+    return;
+  }
+
+  try {
+    const user = await userModel.findById(userId).exec();
+
+    if (isNull(user)) {
+      res.status(404).send({detail: 'User not found'});
+      return;
+    }
+
+    const {password, ...rest} = user as User;
+
+    res.status(200).send({
+      message: 'success',
+      ...rest,
     });
   } catch (error) {
     res.status(401).send({detail: error});
