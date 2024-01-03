@@ -4,9 +4,7 @@ import React from 'react';
 
 import styles from './styles.module.scss';
 
-export interface NavbarProps extends React.HTMLAttributes<HTMLDivElement> {
-  queryParams: QueryParams;
-}
+type NavbarProps = React.HTMLAttributes<HTMLDivElement> & QueryParams;
 
 interface Tab {
   path: string;
@@ -17,10 +15,8 @@ interface Tab {
   isActive: boolean;
 }
 
-const Navbar: React.FC<NavbarProps> = ({queryParams, ...rest}) => {
+const Navbar: React.FC<NavbarProps> = ({userId: user_id, ...rest}) => {
   const pathname = usePathname();
-
-  const {userId: user_id} = queryParams ?? {};
 
   const LEFT_TABS: Tab[] = [
     {

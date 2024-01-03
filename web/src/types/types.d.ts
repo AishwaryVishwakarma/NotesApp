@@ -1,8 +1,8 @@
-interface QueryParams {
+declare interface QueryParams {
   userId: string | undefined;
 }
 
-interface PageProps {
+declare interface PageProps {
   searchParams: {
     [key: string]: string | undefined;
   };
