@@ -1,11 +1,12 @@
-import React, {type SVGAttributes} from 'react';
+import React from 'react';
 
-interface SvgProps extends SVGAttributes<SVGElement> {
-  height?: number;
-  width?: number;
-}
+import {type CommonIconProps} from './types';
 
-const EyeClosed: React.FC<SvgProps> = ({height = 24, width = 24, ...rest}) => {
+export const EyeClosed: React.FC<CommonIconProps> = ({
+  height = 24,
+  width = 24,
+  ...rest
+}) => {
   return (
     <svg
       enableBackground='new 0 0 32 32'
@@ -30,5 +31,3 @@ const EyeClosed: React.FC<SvgProps> = ({height = 24, width = 24, ...rest}) => {
     </svg>
   );
 };
-
-export default EyeClosed;

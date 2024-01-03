@@ -33,12 +33,16 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.0.1",
+    "@rive-app/react-canvas": "^4.7.0",
+    "@tsparticles/engine": "^3.0.2",
+    "@tsparticles/react": "^3.0.0",
     "axios": "^1.6.2",
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",
     "react-redux": "^9.0.4",
-    "sharp": "^0.33.1"
+    "sharp": "^0.33.1",
+    "tsparticles": "^3.0.2"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",

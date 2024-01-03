@@ -2,6 +2,7 @@
 
 import {Eye, EyeClosed} from '@/assets/icons';
 import {Spinner} from '@/assets/loaders';
+import {isValidString} from '@/utils';
 import {setStorage} from '@/utils/storage';
 import axios from 'axios';
 import Link from 'next/link';
@@ -10,17 +11,21 @@ import React from 'react';
 
 import styles from './styles.module.scss';
 
-const SignupForm: React.FC = () => {
+interface LoginFormProps {
+  className?: string;
+}
+
+const LoginForm: React.FC<LoginFormProps> = ({className}) => {
   const router = useRouter();
 
   const [formData, setFormData] = React.useState({
-    firstName: '',
-    lastName: '',
     email: '',
     password: '',
   });
 
   const [passwordVisible, setPasswordVisible] = React.useState(false);
+
+  const [error, setError] = React.useState('');
 
   const [loading, setLoading] = React.useState(false);
 
@@ -41,58 +46,38 @@ const SignupForm: React.FC = () => {
 
     setLoading(true);
 
-    const {firstName, lastName, email, password} = formData;
-
-    const payload = {
-      name: firstName + ' ' + lastName,
-      email,
-      password,
-    };
+    setError('');
 
     axios
-      .post(`${process.env.NEXT_PUBLIC_HOST}signup`, payload)
+      .post(`${process.env.NEXT_PUBLIC_HOST}login`, formData)
       .then((res): void => {
-        const {jwtToken} = res.data ?? {};
+        const {id, jwtToken} = res.data ?? {};
         setStorage(
           {
             token: jwtToken,
           },
           localStorage
         );
-        router.push('/');
+        router.push(`/home?user_id=${id}`);
       })
-      .catch((err) => console.debug(err))
+      .catch((err) => {
+        const errorMessage =
+          err?.response?.data?.detail ?? 'Something went wrong';
+        setError(errorMessage);
+      })
       .finally(() => setLoading(false));
   };
 
   return (
-    <form className={styles.form} onSubmit={onSubmitHandler}>
-      <div className={styles.nameField}>
-        <div className={styles.inputField}>
-          <label htmlFor='firstName'>First Name</label>
-          <input
-            id='firstName'
-            name='firstName'
-            type='text'
-            autoComplete='given-name'
-            onChange={onChangeHandler}
-            value={formData.firstName}
-            required
-          />
-        </div>
-        <div className={styles.inputField}>
-          <label htmlFor='lastName'>Last Name</label>
-          <input
-            id='lastName'
-            name='lastName'
-            type='text'
-            autoComplete='family-name'
-            onChange={onChangeHandler}
-            value={formData.lastName}
-            required
-          />
-        </div>
-      </div>
+    <form
+      className={`${className} ${styles.loginForm}`}
+      onSubmit={onSubmitHandler}
+    >
+      <h1>
+        Welcome back!
+        <br />
+        Log in to your account
+      </h1>
       <div className={styles.inputField}>
         <label htmlFor='email'>Email</label>
         <input
@@ -126,12 +111,13 @@ const SignupForm: React.FC = () => {
           {passwordVisible ? <Eye /> : <EyeClosed />}
         </span>
       </div>
-      <button type='submit'>{loading ? <Spinner /> : 'Sign Up'}</button>
+      <p className={styles.error}>{isValidString(error) && error}</p>
+      <button type='submit'>{loading ? <Spinner /> : 'Login'}</button>
       <span className={styles.footer}>
-        Already have an account? <Link href='/'>Sign In</Link>
+        Don&apos;t have an account? <Link href='/signup'>Sign Up</Link>
       </span>
     </form>
   );
 };
 
-export default SignupForm;
+export default LoginForm;

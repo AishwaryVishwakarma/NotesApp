@@ -2,35 +2,29 @@
 
 import React from 'react';
 
-// import Footer from '../Footer/Footer';
-// import Navbar from '../Navbar/Navbar';
-
-interface LayoutProps {
-  children: React.ReactNode;
-  className?: string;
-  navbarStyles?: string;
-  footerStyles?: string;
-  navbar?: boolean;
-  footer?: boolean;
-  layouted?: boolean;
-}
+import CustomParticles from '../CustomParticles/CustomParticles';
+import Navbar from '../Navbar/Navbar';
+import {type LayoutProps} from './types';
 
 const Layout: React.FC<LayoutProps> = ({
   children,
   className,
-  navbarStyles,
-  footerStyles,
-  navbar = true,
-  footer = true,
+  showParticles = true,
+  particleProps,
+  showNavbar = true,
+  navbarProps,
   layouted = false,
+  queryParams,
 }) => {
   return (
     <>
-      {/* {navbar && <Navbar className={navbarStyles} />} */}
+      {showNavbar && (
+        <Navbar {...navbarProps} queryParams={queryParams as QueryParams} />
+      )}
       <main className={`${className} ${layouted && 'layouted'}`}>
         {children}
+        {showParticles && <CustomParticles {...particleProps} />}
       </main>
-      {/* {footer && <Footer className={footerStyles} />} */}
     </>
   );
 };

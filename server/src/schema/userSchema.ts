@@ -20,12 +20,12 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
   account_created_on: {
-    type: Date,
+    type: String,
     required: true,
-    default: Date.now,
+    default: Date(),
   },
   last_log_in: {
-    type: Date,
+    type: String,
     required: false,
   },
 });

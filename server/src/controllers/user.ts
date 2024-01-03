@@ -9,6 +9,7 @@ dotenv.config();
 
 const saltSize = process.env.SALT_SIZE as string;
 
+// Signup function
 export async function signup(
   req: express.Request,
   res: express.Response
@@ -43,5 +44,42 @@ export async function signup(
     });
   } catch (err) {
     res.status(401).send({detail: err}); // error cases to be discussed
+  }
+}
+
+// Login function
+export async function login(
+  req: express.Request,
+  res: express.Response
+): Promise<void> {
+  const {email, password} = req.body;
+
+  if (!email || !password) {
+    res.status(400).send({detail: 'Mandatory Field missing'});
+    return;
+  }
+
+  const user = await userModel.findOne({email}).exec();
+
+  if (!user || !(await bcrypt.compare(password, user.password))) {
+    res.status(401).send({detail: 'Invalid Credentials'});
+    return;
+  }
+
+  try {
+    const jwtToken = generateJWT(user.id);
+
+    user.last_log_in = Date();
+
+    await user.save();
+
+    res.status(200).send({
+      message: 'success',
+      id: user._id,
+      email,
+      jwtToken,
+    });
+  } catch (error) {
+    res.status(401).send({detail: error});
   }
 }
