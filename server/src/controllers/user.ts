@@ -91,6 +91,8 @@ export async function getUser(
 ): Promise<void> {
   const {user_id: userId} = req.body ?? {};
 
+  console.log(userId);
+
   if (isNullOrUndefined(userId)) {
     res.status(400).send({detail: 'User ID is missing'});
     return;
@@ -104,13 +106,23 @@ export async function getUser(
       return;
     }
 
-    const {password, ...rest} = user as User;
+    const {
+      _id: id,
+      name,
+      email,
+      account_created_on,
+      last_log_in,
+    } = user as User;
 
     res.status(200).send({
       message: 'success',
-      ...rest,
+      id,
+      name,
+      email,
+      account_created_on,
+      last_log_in,
     });
   } catch (error) {
-    res.status(401).send({detail: error});
+    res.status(401).send({detail: 'Unauthorized access, please login again'});
   }
 }

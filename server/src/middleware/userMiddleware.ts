@@ -20,11 +20,10 @@ export function authenticateJWT(
   if (authHeader) {
     const token = authHeader.split(' ')[1];
 
-    jwt.verify(token, privateKey, (err, user) => {
+    jwt.verify(token, privateKey, (err) => {
       if (err) {
         return res.status(401).send({detail: err.message});
       }
-      // req.user = user.id;
       next();
     });
   } else {
