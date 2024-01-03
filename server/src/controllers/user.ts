@@ -17,7 +17,7 @@ export async function signup(
   const {name, email, password} = req.body;
 
   if (!name || !email || !password) {
-    res.status(400).send({detail: 'Mandatory Field missing'});
+    res.status(400).send({message: 'Mandatory Field missing'});
     return;
   }
 
