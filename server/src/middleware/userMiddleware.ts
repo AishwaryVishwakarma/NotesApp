@@ -7,7 +7,7 @@ dotenv.config();
 const privateKey = process.env.PRIVATE_KEY as string;
 
 export function generateJWT(id: string) {
-  return jwt.sign({id: id}, privateKey, {expiresIn: '30d'});
+  return jwt.sign({id}, privateKey, {expiresIn: '30d'});
 }
 
 export function authenticateJWT(
