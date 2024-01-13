@@ -1,6 +1,6 @@
 import Profile from '@/components/pages/Profile/Profile';
 import {type Metadata} from 'next';
-import React from 'react';
+import React, {Suspense} from 'react';
 
 import styles from './styles.module.scss';
 
@@ -12,7 +12,9 @@ const ProfilePage: React.FC = () => {
   return (
     <div className={styles.profilePage}>
       <h1>Hello 👋</h1>
-      <Profile />
+      <Suspense fallback={<h2>Your profile details</h2>}>
+        <Profile />
+      </Suspense>
     </div>
   );
 };
