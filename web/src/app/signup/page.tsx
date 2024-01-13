@@ -1,6 +1,6 @@
 import Layout from '@/components/Layout/Layout';
 import SignupForm from '@/components/SignupForm/SignupForm';
-import type {Metadata} from 'next';
+import {type Metadata} from 'next';
 import React from 'react';
 
 import styles from './styles.module.scss';

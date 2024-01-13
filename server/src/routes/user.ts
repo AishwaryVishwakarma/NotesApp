@@ -8,6 +8,6 @@ router.post('/signup', signup);
 
 router.post('/login', login);
 
-router.get('/user', authenticateJWT, getUser);
+router.post('/user', authenticateJWT, getUser);
 
 export default router;

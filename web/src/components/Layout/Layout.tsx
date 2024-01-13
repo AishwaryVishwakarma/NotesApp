@@ -1,9 +1,8 @@
-'use client';
-
-import React from 'react';
+import React, {Suspense} from 'react';
 
 import CustomParticles from '../CustomParticles/CustomParticles';
 import Navbar from '../Navbar/Navbar';
+import styles from './styles.module.scss';
 import {type LayoutProps} from './types';
 
 const Layout: React.FC<LayoutProps> = ({
@@ -14,18 +13,21 @@ const Layout: React.FC<LayoutProps> = ({
   showNavbar = true,
   navbarProps,
   layouted = false,
-  queryParams,
 }) => {
   return (
-    <>
+    <div className={`${styles.layout} ${showNavbar && styles.grid}`}>
       {showNavbar && (
-        <Navbar {...navbarProps} queryParams={queryParams as QueryParams} />
+        <header>
+          <Suspense fallback={<nav>Navbar</nav>}>
+            <Navbar {...navbarProps} />
+          </Suspense>
+        </header>
       )}
       <main className={`${className} ${layouted && 'layouted'}`}>
         {children}
-        {showParticles && <CustomParticles {...particleProps} />}
       </main>
-    </>
+      {showParticles && <CustomParticles {...particleProps} />}
+    </div>
   );
 };
 

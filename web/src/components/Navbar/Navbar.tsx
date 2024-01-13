@@ -1,37 +1,40 @@
+'use client';
+
 import Link from 'next/link';
 import {usePathname, useSearchParams} from 'next/navigation';
 import React from 'react';
 
 import styles from './styles.module.scss';
 
-type NavbarProps = React.HTMLAttributes<HTMLDivElement> & QueryParams;
+export type NavbarProps = React.HTMLAttributes<HTMLDivElement>;
 
 interface Tab {
   path: string;
   name: string;
   query: {
-    [key: string]: string | undefined;
+    [key: string]: string | null;
   };
   isActive: boolean;
 }
 
-const Navbar: React.FC<NavbarProps> = ({userId: user_id, ...rest}) => {
+const Navbar: React.FC<NavbarProps> = ({...rest}) => {
   const pathname = usePathname();
 
-  const LEFT_TABS: Tab[] = [
+  const searchParams = useSearchParams();
+
+  const user_id = searchParams.get('user_id');
+
+  const TABS: Tab[] = [
     {
-      path: '/home',
+      path: '/dashboard',
       name: 'Home',
       query: {
         user_id,
       },
       isActive: pathname === '/home',
     },
-  ];
-
-  const RIGHT_TABS: Tab[] = [
     {
-      path: '/profile',
+      path: '/dashboard/profile',
       name: 'Profile',
       query: {
         user_id,
@@ -42,30 +45,10 @@ const Navbar: React.FC<NavbarProps> = ({userId: user_id, ...rest}) => {
 
   return (
     <nav className={styles.navbar} {...rest}>
-      <div className={styles.left}>
-        <ul>
-          {LEFT_TABS.map((tab) => {
-            const {path, name, query, isActive} = tab;
-            return (
-              <li key={name} className={styles.tab}>
-                <Link
-                  href={{
-                    pathname: path,
-                    query,
-                  }}
-                  className={isActive ? styles.active : ''}
-                >
-                  {name}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
       <p className={styles.heading}>
         <Link
           href={{
-            pathname: '/home',
+            pathname: '/dashboard',
             query: {
               user_id,
             },
@@ -74,26 +57,24 @@ const Navbar: React.FC<NavbarProps> = ({userId: user_id, ...rest}) => {
           Notes App
         </Link>
       </p>
-      <div className={styles.right}>
-        <ul>
-          {RIGHT_TABS.map((tab) => {
-            const {path, name, query, isActive} = tab;
-            return (
-              <li key={name} className={styles.tab}>
-                <Link
-                  href={{
-                    pathname: path,
-                    query,
-                  }}
-                  className={isActive ? styles.active : ''}
-                >
-                  {name}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+      <ul>
+        {TABS.map((tab) => {
+          const {path, name, query, isActive} = tab;
+          return (
+            <li key={name} className={styles.tab}>
+              <Link
+                href={{
+                  pathname: path,
+                  query,
+                }}
+                className={isActive ? styles.active : ''}
+              >
+                {name}
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
     </nav>
   );
 };

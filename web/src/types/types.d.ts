@@ -1,5 +1,5 @@
 declare interface QueryParams {
-  userId: string | undefined;
+  userId: string | null;
 }
 
 declare interface PageProps {

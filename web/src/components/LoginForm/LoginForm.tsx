@@ -2,6 +2,8 @@
 
 import {Eye, EyeClosed} from '@/assets/icons';
 import {Spinner} from '@/assets/loaders';
+import {setProfile} from '@/redux/features/profileSlice';
+import {useAppDispatch} from '@/redux/store';
 import {isValidString} from '@/utils';
 import {setStorage} from '@/utils/storage';
 import axios from 'axios';
@@ -16,6 +18,8 @@ interface LoginFormProps {
 }
 
 const LoginForm: React.FC<LoginFormProps> = ({className}) => {
+  const dispatch = useAppDispatch();
+
   const router = useRouter();
 
   const [formData, setFormData] = React.useState({
@@ -51,13 +55,14 @@ const LoginForm: React.FC<LoginFormProps> = ({className}) => {
     axios
       .post(`${process.env.NEXT_PUBLIC_HOST}login`, formData)
       .then((res): void => {
-        const {id, jwtToken} = res.data ?? {};
+        const {id, jwtToken, name, email} = res.data ?? {};
         setStorage(
           {
             token: jwtToken,
           },
           localStorage
         );
+        dispatch(setProfile({name, email}));
         router.push(`/home?user_id=${id}`);
       })
       .catch((err) => {

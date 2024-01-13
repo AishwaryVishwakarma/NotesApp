@@ -76,6 +76,7 @@ export async function login(
     res.status(200).send({
       message: 'success',
       id: user._id,
+      name: user.name,
       email,
       jwtToken,
     });
@@ -84,14 +85,12 @@ export async function login(
   }
 }
 
-//
+// Get User function
 export async function getUser(
   req: express.Request,
   res: express.Response
 ): Promise<void> {
   const {user_id: userId} = req.body ?? {};
-
-  console.log(userId);
 
   if (isNullOrUndefined(userId)) {
     res.status(400).send({detail: 'User ID is missing'});
