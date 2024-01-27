@@ -1,19 +1,69 @@
 'use client';
 
 import {Spinner} from '@/assets/loaders';
+import Skeleton, {type SkeletonProps} from '@/components/Skeleton/Skeleton';
 import useUser from '@/hooks/useUser';
 import {isValidString} from '@/utils';
 import axios from 'axios';
 import React from 'react';
 
-import Loading from './Loading';
 import styles from './styles.module.scss';
 
-const Profile = () => {
+const skeletonConfig: SkeletonProps['config'] = [
+  {
+    id: 'label1',
+    style: {
+      height: '20px',
+      width: '100px',
+      background: '#dcdcdc',
+      borderRadius: '6px',
+    },
+  },
+  {
+    id: 'input1',
+    style: {
+      height: '40px',
+      width: '600px',
+      background: '#dcdcdc',
+      borderRadius: '6px',
+    },
+  },
+  {
+    id: 'label2',
+    style: {
+      height: '20px',
+      width: '100px',
+      background: '#dcdcdc',
+      borderRadius: '6px',
+      marginTop: '20px',
+    },
+  },
+  {
+    id: 'input2',
+    style: {
+      height: '40px',
+      width: '600px',
+      background: '#dcdcdc',
+      borderRadius: '6px',
+    },
+  },
+  {
+    id: 'button',
+    style: {
+      height: '40px',
+      width: '200px',
+      background: '#dcdcdc',
+      borderRadius: '6px',
+      marginTop: '40px',
+    },
+  },
+];
+
+const Profile: React.FC = () => {
   const {
     loading: profileLoading,
     profile: {name, email},
-    update,
+    update: updateUser,
   } = useUser();
 
   const [error, setError] = React.useState('');
@@ -39,7 +89,7 @@ const Profile = () => {
   };
 
   return profileLoading ? (
-    <Loading />
+    <Skeleton config={skeletonConfig} className={styles.skeleton} />
   ) : (
     <form className={styles.profileForm} onSubmit={onSubmitHandler}>
       <div className={styles.inputField}>
@@ -49,7 +99,7 @@ const Profile = () => {
           name='name'
           type='text'
           autoComplete='name'
-          onChange={update}
+          onChange={updateUser}
           value={name}
           required
         />
@@ -61,7 +111,7 @@ const Profile = () => {
           name='email'
           type='email'
           autoComplete='email'
-          onChange={update}
+          onChange={updateUser}
           value={email}
           required
         />

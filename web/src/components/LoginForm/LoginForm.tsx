@@ -58,12 +58,12 @@ const LoginForm: React.FC<LoginFormProps> = ({className}) => {
         const {id, jwtToken, name, email} = res.data ?? {};
         setStorage(
           {
-            token: jwtToken,
+            'na-token': jwtToken,
           },
           localStorage
         );
         dispatch(setProfile({name, email}));
-        router.push(`/home?user_id=${id}`);
+        router.push(`/dashboard?user_id=${id}`);
       })
       .catch((err) => {
         const errorMessage =

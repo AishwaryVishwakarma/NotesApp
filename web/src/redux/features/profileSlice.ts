@@ -19,7 +19,7 @@ const initialState = {
 } as Profile;
 
 export interface FormDetails {
-  name: 'name' | 'email';
+  name: keyof ProfileDetails;
   value: string;
 }
 
@@ -31,6 +31,7 @@ export const profile = createSlice({
       state.profile = action.payload;
       state.isEmpty = false;
     },
+
     updateProfile: (state, action: PayloadAction<FormDetails>) => {
       const {name, value} = action.payload ?? {};
 

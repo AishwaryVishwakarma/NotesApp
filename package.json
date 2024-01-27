@@ -20,7 +20,5 @@
   "bugs": {
     "url": "https://github.com/AishwaryVishwakarma/NotesApp/issues"
   },
-  "dependencies": {
-    "blurhash": "^2.0.5"
-  }
+  "dependencies": {}
 }

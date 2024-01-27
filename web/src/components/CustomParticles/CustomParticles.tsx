@@ -96,7 +96,7 @@ const CustomParticles: React.FC<ParticlesProps> = ({
   React.useEffect(() => {
     initParticlesEngine(async (engine): Promise<void> => {
       await loadFull(engine);
-    }).then(() => {
+    }).then((): void => {
       setInit(true);
     });
   });

@@ -9,12 +9,7 @@ interface LayoutProps {
 
 const DashboardLayout: React.FC<LayoutProps> = ({children}) => {
   return (
-    <Layout
-      className={styles.layout}
-      particleProps={{
-        className: styles.particlesContainer,
-      }}
-    >
+    <Layout className={styles.layout} showParticles={false}>
       {children}
     </Layout>
   );

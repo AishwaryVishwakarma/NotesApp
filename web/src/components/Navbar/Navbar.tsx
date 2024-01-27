@@ -1,5 +1,6 @@
 'use client';
 
+import {clearStorage} from '@/utils/storage';
 import Link from 'next/link';
 import {usePathname, useSearchParams} from 'next/navigation';
 import React from 'react';
@@ -11,10 +12,11 @@ export type NavbarProps = React.HTMLAttributes<HTMLDivElement>;
 interface Tab {
   path: string;
   name: string;
-  query: {
+  query?: {
     [key: string]: string | null;
   };
-  isActive: boolean;
+  isActive?: boolean;
+  onClick?: () => void;
 }
 
 const Navbar: React.FC<NavbarProps> = ({...rest}) => {
@@ -31,7 +33,7 @@ const Navbar: React.FC<NavbarProps> = ({...rest}) => {
       query: {
         user_id,
       },
-      isActive: pathname === '/home',
+      isActive: pathname === '/dashboard',
     },
     {
       path: '/dashboard/profile',
@@ -39,7 +41,14 @@ const Navbar: React.FC<NavbarProps> = ({...rest}) => {
       query: {
         user_id,
       },
-      isActive: pathname === '/profile',
+      isActive: pathname === '/dashboard/profile',
+    },
+    {
+      path: '/',
+      name: 'Log Out',
+      onClick: (): void => {
+        clearStorage(['na-token'], localStorage);
+      },
     },
   ];
 
@@ -59,7 +68,7 @@ const Navbar: React.FC<NavbarProps> = ({...rest}) => {
       </p>
       <ul>
         {TABS.map((tab) => {
-          const {path, name, query, isActive} = tab;
+          const {path, name, query, isActive, onClick} = tab;
           return (
             <li key={name} className={styles.tab}>
               <Link
@@ -68,6 +77,7 @@ const Navbar: React.FC<NavbarProps> = ({...rest}) => {
                   query,
                 }}
                 className={isActive ? styles.active : ''}
+                onClick={onClick}
               >
                 {name}
               </Link>

@@ -1,7 +1,7 @@
 'use client';
 
 import {
-  FormDetails,
+  type FormDetails,
   setProfile,
   updateProfile,
 } from '@/redux/features/profileSlice';
@@ -19,19 +19,19 @@ const useUser = () => {
 
   const dispatch = useAppDispatch();
 
+  const searchParams = useSearchParams();
+
   const {
     profile: {name, email},
     isEmpty,
   } = useAppSelector((state) => state.profile);
-
-  const searchParams = useSearchParams();
 
   const userId = searchParams.get('user_id');
 
   const [loading, setLoading] = React.useState(isEmpty);
 
   if (typeof window !== 'undefined') {
-    [authToken] = getStorage(['token'], localStorage);
+    [authToken] = getStorage(['na-token'], localStorage);
   }
 
   const isValidUser = isValidString(userId) && !isNull(authToken);
@@ -61,6 +61,7 @@ const useUser = () => {
         `${process.env.NEXT_PUBLIC_HOST}user`,
         {
           user_id: userId,
+          message: 'Get user information',
         },
         {
           headers: {
@@ -70,8 +71,8 @@ const useUser = () => {
       )
       .then((res) => {
         const {name, email} = res.data;
-        setLoading(false);
         dispatch(setProfile({name, email}));
+        setLoading(false);
       })
       .catch(() => {
         router.replace('/');

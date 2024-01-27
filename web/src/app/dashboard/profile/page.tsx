@@ -12,7 +12,7 @@ const ProfilePage: React.FC = () => {
   return (
     <div className={styles.profilePage}>
       <h1>Hello 👋</h1>
-      <Suspense fallback={<h2>Your profile details</h2>}>
+      <Suspense fallback={<h2>Profile details</h2>}>
         <Profile />
       </Suspense>
     </div>

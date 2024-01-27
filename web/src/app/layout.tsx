@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   title: 'Notes App',
   description: 'A Notes sharing platform',
   creator: 'Aishwary Vishwakarma',
+  other: {
+    'view-transition': 'same-origin',
+  },
 };
 
 export default function RootLayout({children}: {children: React.ReactNode}) {

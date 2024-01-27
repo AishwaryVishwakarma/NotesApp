@@ -55,14 +55,16 @@ const SignupForm: React.FC = () => {
         const {jwtToken} = res.data ?? {};
         setStorage(
           {
-            token: jwtToken,
+            'na-token': jwtToken,
           },
           localStorage
         );
         router.push('/');
       })
-      .catch((err) => console.debug(err))
-      .finally(() => setLoading(false));
+      .catch((err) => {
+        console.debug(err);
+        setLoading(false);
+      });
   };
 
   return (
