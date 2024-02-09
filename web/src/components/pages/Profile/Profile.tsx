@@ -1,15 +1,15 @@
 'use client';
 
 import {Spinner} from '@/assets/loaders';
-import Skeleton, {type SkeletonProps} from '@/components/Skeleton/Skeleton';
 import useUser from '@/hooks/useUser';
 import {isValidString} from '@/utils';
+import {Skeleton, type SkeletonConfig} from '@aishwaryv/react-skeleton';
 import axios from 'axios';
 import React from 'react';
 
 import styles from './styles.module.scss';
 
-const skeletonConfig: SkeletonProps['config'] = [
+const skeletonConfig: SkeletonConfig = [
   {
     id: 'label1',
     style: {

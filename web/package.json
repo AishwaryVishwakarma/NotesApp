@@ -32,6 +32,7 @@
     ]
   },
   "dependencies": {
+    "@aishwaryv/react-skeleton": "^1.0.0",
     "@reduxjs/toolkit": "^2.0.1",
     "@rive-app/react-canvas": "^4.7.0",
     "@tsparticles/engine": "^3.0.2",
